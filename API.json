@@ -1,0 +1,1402 @@
+{
+"3D:RF:09:7F::": {
+"Name": "R1",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.1",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:02": {
+"Name": "SW2",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2", "GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.2",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:03": {
+"Name": "FW3",
+"Protocolos": ["IPSec", "NAT"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["FastEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.3",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:04": {
+"Name": "AP4",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.4",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:05": {
+"Name": "R5",
+"Protocolos": ["OSPF", "RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["REQUIRED_IP"],
+"ET": true,
+"IP": "192.168.10.5",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:06": {
+"Name": "SW6",
+"Protocolos": ["VTP", "STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/4"],
+"Policies": ["BLOCK_IP"],
+"ET": false,
+"IP": "192.168.10.6",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:07": {
+"Name": "R7",
+"Protocolos": ["EIGRP", "OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.7",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:08": {
+"Name": "SW8",
+"Protocolos": ["LLDP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.8",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:09": {
+"Name": "FW9",
+"Protocolos": ["OSPF", "HA"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["RESTRICT_SSH"],
+"ET": true,
+"IP": "192.168.10.9",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:0A": {
+"Name": "AP10",
+"Protocolos": ["CAPWAP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.10",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:0B": {
+"Name": "R11",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.11",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:0C": {
+"Name": "SW12",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.12",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:0D": {
+"Name": "R13",
+"Protocolos": ["BGP", "RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.13",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:0E": {
+"Name": "SW14",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.14",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:0F": {
+"Name": "FW15",
+"Protocolos": ["IPSec"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["FastEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.15",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:10": {
+"Name": "R16",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.16",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:11": {
+"Name": "SW17",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/5"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.17",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:12": {
+"Name": "AP18",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.18",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:13": {
+"Name": "R19",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.19",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:14": {
+"Name": "SW20",
+"Protocolos": ["VTP", "STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.20",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:15": {
+"Name": "FW21",
+"Protocolos": ["NAT", "HA"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.21",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:16": {
+"Name": "R22",
+"Protocolos": ["EIGRP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.22",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:17": {
+"Name": "SW23",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.23",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:18": {
+"Name": "AP24",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["BLOCK_IP"],
+"ET": false,
+"IP": "192.168.10.24",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:19": {
+"Name": "R25",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.25",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:1A": {
+"Name": "SW26",
+"Protocolos": ["STP", "LLDP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/4"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.26",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:1B": {
+"Name": "FW27",
+"Protocolos": ["IPSec", "OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.27",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:1C": {
+"Name": "R28",
+"Protocolos": ["RIP", "OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.28",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:1D": {
+"Name": "SW29",
+"Protocolos": ["STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.29",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:1E": {
+"Name": "AP30",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.30",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:1F": {
+"Name": "R31",
+"Protocolos": ["BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.31",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:20": {
+"Name": "SW32",
+"Protocolos": ["LACP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.32",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:21": {
+"Name": "FW33",
+"Protocolos": ["HA"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.33",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:22": {
+"Name": "R34",
+"Protocolos": ["OSPF", "EIGRP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.34",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:23": {
+"Name": "SW35",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.35",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:24": {
+"Name": "AP36",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.36",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:25": {
+"Name": "R37",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.37",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:26": {
+"Name": "SW38",
+"Protocolos": ["VTP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/4"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.38",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:27": {
+"Name": "FW39",
+"Protocolos": ["IPSec", "NAT"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.39",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:28": {
+"Name": "R40",
+"Protocolos": ["BGP", "OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.40",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:29": {
+"Name": "SW41",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.41",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:2A": {
+"Name": "AP42",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.42",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:2B": {
+"Name": "R43",
+"Protocolos": ["OSPF", "RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.43",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:2C": {
+"Name": "SW44",
+"Protocolos": ["LLDP", "STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.44",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:2D": {
+"Name": "FW45",
+"Protocolos": ["HA"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.45",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:2E": {
+"Name": "R46",
+"Protocolos": ["EIGRP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.46",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:2F": {
+"Name": "SW47",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.47",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:30": {
+"Name": "AP48",
+"Protocolos": ["CAPWAP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.48",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:31": {
+"Name": "R49",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.49",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:32": {
+"Name": "SW50",
+"Protocolos": ["VTP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.50",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:33": {
+"Name": "FW51",
+"Protocolos": ["IPSec"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.51",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:34": {
+"Name": "R52",
+"Protocolos": ["RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.52",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:35": {
+"Name": "SW53",
+"Protocolos": ["STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.53",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:36": {
+"Name": "AP54",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.54",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:37": {
+"Name": "R55",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.55",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:38": {
+"Name": "SW56",
+"Protocolos": ["LACP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.56",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:39": {
+"Name": "FW57",
+"Protocolos": ["NAT"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.57",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:3A": {
+"Name": "R58",
+"Protocolos": ["BGP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.58",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:3B": {
+"Name": "SW59",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.59",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:3C": {
+"Name": "AP60",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.60",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:3D": {
+"Name": "R61",
+"Protocolos": ["OSPF", "EIGRP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.61",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:3E": {
+"Name": "SW62",
+"Protocolos": ["LLDP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/4"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.62",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:3F": {
+"Name": "FW63",
+"Protocolos": ["IPSec", "HA"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.63",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:40": {
+"Name": "R64",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.64",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:41": {
+"Name": "SW65",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.65",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:42": {
+"Name": "AP66",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.66",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:43": {
+"Name": "R67",
+"Protocolos": ["BGP", "RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.67",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:44": {
+"Name": "SW68",
+"Protocolos": ["VTP", "STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.68",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:45": {
+"Name": "FW69",
+"Protocolos": ["NAT"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.69",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:46": {
+"Name": "R70",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.70",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:47": {
+"Name": "SW71",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.71",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:48": {
+"Name": "AP72",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.72",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:49": {
+"Name": "R73",
+"Protocolos": ["EIGRP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.73",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:50": {
+"Name": "SW74",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.74",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:51": {
+"Name": "FW75",
+"Protocolos": ["IPSec", "NAT"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.75",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:52": {
+"Name": "R76",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.76",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:53": {
+"Name": "SW77",
+"Protocolos": ["LLDP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.77",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:54": {
+"Name": "AP78",
+"Protocolos": ["CAPWAP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.78",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:55": {
+"Name": "R79",
+"Protocolos": ["RIP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.79",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:56": {
+"Name": "SW80",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.80",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:57": {
+"Name": "FW81",
+"Protocolos": ["HA"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.81",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:58": {
+"Name": "R82",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.82",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:59": {
+"Name": "SW83",
+"Protocolos": ["LACP", "STP"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.83",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:5A": {
+"Name": "AP84",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.84",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:5B": {
+"Name": "R85",
+"Protocolos": ["BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.85",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:5C": {
+"Name": "SW86",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/4"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.86",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:5D": {
+"Name": "FW87",
+"Protocolos": ["IPSec"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.87",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:5E": {
+"Name": "R88",
+"Protocolos": ["EIGRP", "OSPF"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.88",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:5F": {
+"Name": "SW89",
+"Protocolos": ["VTP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.89",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:60": {
+"Name": "AP90",
+"Protocolos": ["CAPWAP", "802.11X"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.90",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:61": {
+"Name": "R91",
+"Protocolos": ["OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.91",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:62": {
+"Name": "SW92",
+"Protocolos": ["STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.92",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:63": {
+"Name": "FW93",
+"Protocolos": ["NAT", "HA"],
+"status": "offline",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["BLOCK_ALL"],
+"ET": false,
+"IP": "192.168.10.93",
+"SSH": false
+}
+}
+},
+"3D:AF:09:7F:00:64": {
+"Name": "R94",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/3"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.94",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:65": {
+"Name": "SW95",
+"Protocolos": ["LLDP", "STP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.95",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:66": {
+"Name": "AP96",
+"Protocolos": ["CAPWAP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["WLAN0"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.96",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:67": {
+"Name": "R97",
+"Protocolos": ["RIP", "OSPF"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.97",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:68": {
+"Name": "SW98",
+"Protocolos": ["STP", "LACP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/2"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.98",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:69": {
+"Name": "FW99",
+"Protocolos": ["IPSec", "NAT"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.99",
+"SSH": true
+}
+}
+},
+"3D:AF:09:7F:00:6A": {
+"Name": "R100",
+"Protocolos": ["OSPF", "BGP"],
+"status": "online",
+"VLANs": {
+"VL1": {
+"Ports": ["GigabitEthernet0/1"],
+"Policies": ["ALLOW_ALL"],
+"ET": true,
+"IP": "192.168.10.100",
+"SSH": true
+}
+}
+}
+}
