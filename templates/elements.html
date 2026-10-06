@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Network devices</title>
+    <style>
+        :root { color-scheme: light; --ink: #202b30; --muted: #61716a; --line: #dce4df; --paper: #fff; --wash: #f3f6f4; --green: #28594c; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 40px; color: var(--ink); background: var(--wash); font: 15px/1.5 sans-serif; }
+        main { max-width: 1100px; margin: 0 auto; }
+        header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+        h1 { margin: 0; font-size: 26px; }
+        .toolbar, .actions { display: flex; align-items: center; gap: 8px; }
+        .icon-button { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid #d7dfda; border-radius: 5px; color: var(--green); background: var(--paper); text-decoration: none; cursor: pointer; padding: 0; }
+        .icon-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .add-button { width: 46px; height: 46px; color: #fff; background: var(--green); border-color: var(--green); }
+        .add-button svg { width: 23px; height: 23px; }
+        .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 13px 16px; border-bottom: 1px solid #e8ede9; white-space: nowrap; }
+        th { color: var(--muted); background: #f8faf8; font-size: 12px; text-transform: uppercase; }
+        tr:last-child td { border-bottom: 0; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 12px; }
+        .online { color: #176448; background: #e3f4eb; }
+        .offline { color: #8b4a36; background: #faece6; }
+        .notice { margin: 0 0 16px; color: #176448; padding: 10px; border-radius: 5px; background: #e3f4eb; }
+        .notice.error { color: #8b4a36; background: #faece6; }
+        @media (max-width: 640px) { body { padding: 20px 12px; } header { align-items: flex-start; } }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Network devices</h1>
+            <div class="toolbar" aria-label="Device actions">
+                <button class="icon-button" type="button" aria-label="Search devices" title="Search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+                </button>
+                <a class="icon-button add-button" href="{{ url_for('add_element') }}" aria-label="Add device" title="Add device">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <!-- Bloque para mostrar avisos y mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <p class="notice {{ category }}" role="status">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% if added %}<p class="notice" role="status">Device added successfully.</p>{% endif %}
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Identifier</th>
+                        <th>Name</th>
+                        <th>Device IP</th>
+                        <th>Status</th>
+                        <th>Protocols</th>
+                        <th>VLANs</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in devices %}
+                    <tr>
+                        <td>{{ row.identifier }}</td>
+                        <td>{{ row.record.Name }}</td>
+                        <td>{{ row.ip }}</td>
+                        <td><span class="status {{ row.record.status }}">{{ row.record.status }}</span></td>
+                        <td>{{ row.record.Protocolos | join(", ") }}</td>
+                        <td>
+                            {% for vlan_id, vlan in row.record.VLANs.items() %}
+                                {{ vlan_id }} ({{ vlan.IP }}){% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <a class="icon-button" href="{{ url_for('edit_element', device_id=row.identifier) }}" aria-label="Modify {{ row.record.Name }}" title="Modify">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5 5 5M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"></path></svg>
+                                </a>
+                                <form action="{{ url_for('delete_element', device_id=row.identifier) }}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this device?');">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button class="icon-button" type="submit" aria-label="Delete {{ row.record.Name }}" title="Delete">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"></path></svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="7">No network devices have been added.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

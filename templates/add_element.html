@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ 'Edit network device' if element else 'Add network device' }}</title>
+    <style>
+        :root { color-scheme: light; --ink: #202b30; --muted: #61716a; --line: #dce4df; --paper: #fff; --wash: #f3f6f4; --green: #28594c; --red: #9a4739; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 36px 20px; color: var(--ink); background: var(--wash); font: 15px/1.5 sans-serif; }
+        main { max-width: 900px; margin: 0 auto; }
+        header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+        h1 { margin: 0; font-size: 28px; }
+        h2 { margin: 0 0 16px; font-size: 18px; }
+        h3 { margin: 0; font-size: 16px; }
+        a { color: var(--green); }
+        .section { padding: 22px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); }
+        .device-grid, .vlan-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .field { display: grid; gap: 6px; min-width: 0; }
+        .field label, .field .label { color: #3b4c45; font-size: 13px; font-weight: 600; }
+        input, select { width: 100%; min-height: 40px; padding: 8px 10px; border: 1px solid #cbd6cf; border-radius: 4px; color: var(--ink); background: #fff; font: inherit; }
+        input:focus, select:focus { outline: 2px solid #77a692; outline-offset: 1px; }
+        input.is-invalid, select.is-invalid { border-color: var(--red); }
+        .field-error { min-height: 0; color: var(--red); font-size: 12px; }
+        .field-error:empty { display: none; }
+        .span-two { grid-column: 1 / -1; }
+        .vlan-section { margin-top: 20px; }
+        .vlan-list { display: grid; gap: 12px; }
+        .vlan-card { padding: 16px; border: 1px solid var(--line); border-radius: 5px; background: #fbfcfb; }
+        .vlan-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+        .checks { display: flex; align-items: center; gap: 18px; min-height: 40px; }
+        .check-label { display: inline-flex; align-items: center; gap: 8px; }
+        .check-label input { width: 17px; min-height: 17px; accent-color: var(--green); }
+        button { min-height: 40px; padding: 8px 13px; border: 1px solid var(--green); border-radius: 4px; color: #fff; background: var(--green); font: inherit; cursor: pointer; }
+        button.secondary { color: var(--green); background: #fff; }
+        button.remove-vlan { min-height: 32px; padding: 4px 9px; border-color: #ead6d1; color: var(--red); }
+        button:disabled { opacity: .45; cursor: not-allowed; }
+        .form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .message { min-height: 24px; margin: 12px 0 0; color: var(--red); }
+        @media (max-width: 640px) { body { padding: 22px 12px; } .section { padding: 16px; } .device-grid, .vlan-grid { grid-template-columns: 1fr; } .span-two { grid-column: auto; } }
+    </style>
+</head>
+<body>
+    <main>
+        {% macro vlan_card(vlan_id, vlan) %}
+        <article class="vlan-card" data-vlan-card>
+            <div class="vlan-heading">
+                <h3>VLAN <span data-vlan-number>{{ vlan_id[2:] }}</span></h3>
+                <button class="secondary remove-vlan" type="button" data-remove-vlan>Remove VLAN</button>
+            </div>
+            <div class="vlan-grid">
+                <div class="field">
+                    <label>VLAN ID</label>
+                    <input data-field="id" type="number" min="1" max="4094" step="1" value="{{ vlan_id[2:] }}" required>
+                    <span class="field-error" data-error="id" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                    <label>VLAN IPv4 address</label>
+                    <input data-field="IP" type="text" value="{{ vlan.IP }}" required inputmode="decimal" maxlength="15" placeholder="192.168.10.20">
+                    <span class="field-error" data-error="IP" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                    <label>Ports (comma-separated interfaces)</label>
+                    <input data-field="Ports" type="text" value="{{ vlan.Ports | join(', ') }}" required maxlength="256" placeholder="GigabitEthernet0/1">
+                    <span class="field-error" data-error="Ports" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                    <label>Policies (comma separated)</label>
+                    <input data-field="Policies" type="text" value="{{ vlan.Policies | join(', ') }}" required maxlength="256" placeholder="ALLOW_ALL">
+                    <span class="field-error" data-error="Policies" aria-live="polite"></span>
+                </div>
+                <div class="field span-two">
+                    <span class="label">VLAN options</span>
+                    <div class="checks">
+                        <label class="check-label"><input data-field="ET" type="checkbox" {% if vlan.ET %}checked{% endif %}> ET</label>
+                        <label class="check-label"><input data-field="SSH" type="checkbox" {% if vlan.SSH %}checked{% endif %}> SSH</label>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endmacro %}
+        <header>
+            <h1>{{ 'Edit network device' if element else 'Add network device' }}</h1>
+            <a href="{{ url_for('elements') }}">Back to elements</a>
+        </header>
+        <form id="device-form" action="{{ form_action }}" data-form-mode="{{ 'edit' if element else 'add' }}" data-success-url="{{ url_for('elements', updated=1) if element else url_for('elements', added=1) }}" method="post" novalidate>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <section class="section" aria-labelledby="device-heading">
+                <h2 id="device-heading">Device</h2>
+                <div class="device-grid">
+                    <div class="field">
+                        <label for="device-key">Device key / MAC</label>
+                        <input id="device-key" data-field="identifier" type="text" value="{{ device_id or '' }}" required maxlength="17" autocomplete="off" placeholder="3D:AF:09:7F:00:20" aria-describedby="error-identifier" {% if element %}readonly{% endif %}>
+                        <span class="field-error" id="error-identifier" data-error-for="identifier" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label for="device-name">Name</label>
+                        <input id="device-name" data-field="name" type="text" value="{{ element.Name if element else '' }}" required maxlength="80" placeholder="Router 20" aria-describedby="error-name">
+                        <span class="field-error" id="error-name" data-error-for="name" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label for="device-ip">Device IPv4 address</label>
+                        <input id="device-ip" data-field="device_ip" type="text" value="{{ element.IP if element else '' }}" required inputmode="decimal" maxlength="15" placeholder="192.168.10.20" aria-describedby="error-device-ip">
+                        <span class="field-error" id="error-device-ip" data-error-for="device_ip" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label for="device-status">Status</label>
+                        <select id="device-status" data-field="status" required aria-describedby="error-status">
+                            <option value="online" {% if not element or element.status == 'online' %}selected{% endif %}>online</option>
+                            <option value="offline" {% if element and element.status == 'offline' %}selected{% endif %}>offline</option>
+                        </select>
+                        <span class="field-error" id="error-status" data-error-for="status" aria-live="polite"></span>
+                    </div>
+                    <div class="field span-two">
+                        <label for="device-protocols">Protocols (comma separated)</label>
+                        <input id="device-protocols" data-field="protocols" type="text" value="{{ element.Protocolos | join(', ') if element else '' }}" required maxlength="120" placeholder="OSPF, BGP" aria-describedby="error-protocols">
+                        <span class="field-error" id="error-protocols" data-error-for="protocols" aria-live="polite"></span>
+                    </div>
+                </div>
+            </section>
+            <section class="section vlan-section" aria-labelledby="vlans-heading">
+                <h2 id="vlans-heading">VLAN configurations</h2>
+                <div id="vlan-list" class="vlan-list">
+                    {% if element %}
+                        {% for vlan_id, vlan in element.VLANs.items() %}
+                            {{ vlan_card(vlan_id, vlan) }}
+                        {% endfor %}
+                    {% else %}
+                        {{ vlan_card('VL1', {'Ports': [], 'Policies': [], 'ET': false, 'IP': '', 'SSH': false}) }}
+                    {% endif %}
+                </div>
+                <button id="add-vlan" class="secondary" type="button">+ Add VLAN</button>
+            </section>
+            <p id="form-message" class="message" role="alert" aria-live="polite"></p>
+            <div class="form-actions">
+                <button type="submit">{{ 'Save changes' if element else 'Save device' }}</button>
+                <a class="cancel-link" href="{{ url_for('elements') }}">Cancel</a>
+            </div>
+        </form>
+        <template id="vlan-template">
+            <article class="vlan-card" data-vlan-card>
+                <div class="vlan-heading">
+                    <h3>VLAN <span data-vlan-number></span></h3>
+                    <button class="secondary remove-vlan" type="button" data-remove-vlan>Remove VLAN</button>
+                </div>
+                <div class="vlan-grid">
+                    <div class="field">
+                        <label>VLAN ID</label>
+                        <input data-field="id" type="number" min="1" max="4094" step="1" required>
+                        <span class="field-error" data-error="id" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label>VLAN IPv4 address</label>
+                        <input data-field="IP" type="text" required inputmode="decimal" maxlength="15" placeholder="192.168.10.20">
+                        <span class="field-error" data-error="IP" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label>Ports (comma-separated interfaces)</label>
+                        <input data-field="Ports" type="text" required maxlength="256" placeholder="GigabitEthernet0/1">
+                        <span class="field-error" data-error="Ports" aria-live="polite"></span>
+                    </div>
+                    <div class="field">
+                        <label>Policies (comma separated)</label>
+                        <input data-field="Policies" type="text" required maxlength="256" placeholder="ALLOW_ALL">
+                        <span class="field-error" data-error="Policies" aria-live="polite"></span>
+                    </div>
+                    <div class="field span-two">
+                        <span class="label">VLAN options</span>
+                        <div class="checks">
+                            <label class="check-label"><input data-field="ET" type="checkbox"> ET</label>
+                            <label class="check-label"><input data-field="SSH" type="checkbox"> SSH</label>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </template>
+        <script src="{{ url_for('static', filename='js/add_element.js') }}" defer></script>
+    </main>
+</body>
+</html>
